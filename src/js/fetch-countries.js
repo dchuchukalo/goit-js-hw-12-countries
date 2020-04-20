@@ -26,7 +26,6 @@ function searchCountry(query) {
   }
 
   if (name.length === 0) {
-    clearResultsList();
     wrongQuery();
     spinner.stop();
     return;
