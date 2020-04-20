@@ -4,17 +4,18 @@ import 'pnotify/dist/PNotifyBrightTheme.css';
 PNotify.defaults.delay = 3000;
 
 import debounce from 'lodash.debounce';
-import {spinner} from './spinner'
-import showResult from './show-results'
-import refs from './refs'
+import { spinner } from './spinner';
+import showResult from './show-results';
+import refs from './refs';
+import './clear-input'
 
 function searchCountry(query) {
   const url = 'https://restcountries.eu/rest/v2/name/';
   const name = query.target.value;
-  spinner.spin(refs.bodyRef)
+  spinner.spin(refs.bodyRef);
 
   function wrongQuery() {
-    clearResultsList()
+    clearResultsList();
     PNotify.error({
       text: 'Please enter the correct country name',
     });
@@ -25,8 +26,12 @@ function searchCountry(query) {
   }
 
   if (name.length === 0) {
-    clearResultsList()
+    clearResultsList();
+    wrongQuery();
+    spinner.stop();
+    return;
   }
+  
   fetch(url + name)
     .then(res => {
       if (res.ok) {
@@ -36,7 +41,7 @@ function searchCountry(query) {
     })
     .then(data => showResult(data))
     .finally(() => {
-      spinner.stop()
+      spinner.stop();
     })
     .catch(wrongQuery)
 }
