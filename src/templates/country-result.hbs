@@ -1,13 +1,13 @@
 <h2 class="country-name">{{name}}</h2>
 <div class="country-info">
     <ul class="country-info--list">
-        <li>
+        <li class="country-info--list-item">
             <p><span class="country-info--category">Capital: </span>{{capital}}</p>
         </li>
-        <li>
+        <li class="country-info--list-item">
             <p><span class="country-info--category">Population: </span>{{population}}</p>
-        </li>
-        <li class="country-info--languages">
+        </li >
+        <li class="country-info--languages country-info--list-item">
             <p><span class="country-info--category">Languages:</span></p>
             <ul class="languages-list">
                 {{#each languages}}
@@ -18,5 +18,5 @@
             </ul>
         </li>
     </ul>
-    <img class="shadow-lg mb-5 bg-white rounded" src="{{flag}}" alt="" width="480" >
+    <img class="country-info--img shadow-lg mb-5 bg-white rounded" src="{{flag}}" alt="">
 </div>
