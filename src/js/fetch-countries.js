@@ -1,13 +1,13 @@
 import PNotify from 'pnotify/dist/es/PNotify.js';
 import PNotifyButtons from 'pnotify/dist/es/PNotifyButtons.js';
 import 'pnotify/dist/PNotifyBrightTheme.css';
-PNotify.defaults.delay = 1000000;
+PNotify.defaults.delay = 3000;
 
 import debounce from 'lodash.debounce';
 import { spinner } from './spinner';
 import showResult from './show-results';
 import refs from './refs';
-import './clear-input'
+import './clear-input';
 
 function searchCountry(query) {
   const url = 'https://restcountries.eu/rest/v2/name/';
@@ -30,7 +30,7 @@ function searchCountry(query) {
     spinner.stop();
     return;
   }
-  
+
   fetch(url + name)
     .then(res => {
       if (res.ok) {
@@ -42,7 +42,7 @@ function searchCountry(query) {
     .finally(() => {
       spinner.stop();
     })
-    .catch(wrongQuery)
+    .catch(wrongQuery);
 }
 
 refs.inputRef.addEventListener('input', debounce(searchCountry, 500));

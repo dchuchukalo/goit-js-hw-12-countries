@@ -35,8 +35,13 @@ p {
   text-align: center;
 }
 
+.list-group-item {
+  padding: 0;
+}
+
 .list-group-item--value {
   margin: 0;
+  cursor: pointer;
 }
 
 .country-info--list {
@@ -74,11 +79,7 @@ p {
     width: 200px;
   }
 
-  .results-js {
-    padding: 0 20px;
-  }
-
-  .list-group-item {
+  .list-group-item--value {
     padding: 10px 12px;
   }
 
@@ -112,6 +113,10 @@ p {
   .country-info {
     font-size: 25px;
   }
+
+  .list-group-item--value {
+    padding: 12px 20px;
+  }
 }
 
 @media screen and (min-width: 426px) and (max-width: 767px) {
@@ -134,20 +139,17 @@ p {
     margin: 0 auto;
   }
 
-  .results-js {
-    padding: 0 40px;
-    margin: 0 auto;
-  }
-
   .country-info--img {
     width: 100%;
     max-width: 450px;
   }
 
-  .list-group-item {
+  .page-section {
+    width: 90%;
     margin: 0 auto;
-    max-width: 450px;
+    max-width: 380px;
   }
+
 }
 
 @media screen and (min-width: 768px) {
