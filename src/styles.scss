@@ -27,10 +27,6 @@ p {
   margin: 0;
 }
 
-.page-title {
-  padding-top: 50px;
-}
-
 .page-section {
   text-align: center;
 }
@@ -73,6 +69,7 @@ p {
 @media screen and (max-width: 425px) {
   .page-title {
     font-size: 25px;
+    padding-top: 50px;
   }
 
   .form-control {
@@ -102,6 +99,10 @@ p {
 }
 
 @media screen and (min-width: 426px) {
+  .page-title {
+    padding-top: 50px;
+  }
+
   .country-name {
     margin: 0 auto 30px auto;
   }

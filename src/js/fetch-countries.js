@@ -1,13 +1,17 @@
-import PNotify from 'pnotify/dist/es/PNotify.js';
-import PNotifyButtons from 'pnotify/dist/es/PNotifyButtons.js';
-import 'pnotify/dist/PNotifyBrightTheme.css';
-PNotify.defaults.delay = 3000;
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/mobile/dist/PNotifyMobile.css';
+import { defaults } from '@pnotify/core';
+import { error, defaultModules } from '@pnotify/core/dist/PNotify.js';
+import * as PNotifyMobile from '@pnotify/mobile/dist/PNotifyMobile.js';
+import '@pnotify/core/dist/BrightTheme.css';
+defaultModules.set(PNotifyMobile, {});
+defaults.delay = '3000';
 
 import debounce from 'lodash.debounce';
 import { spinner } from './spinner';
 import showResult from './show-results';
 import refs from './refs';
-import './clear-input';
+import './settings-input';
 
 function searchCountry(query) {
   const url = 'https://restcountries.eu/rest/v2/name/';
@@ -16,7 +20,7 @@ function searchCountry(query) {
 
   function wrongQuery() {
     clearResultsList();
-    PNotify.error({
+    error({
       text: 'Please enter the correct country name',
     });
   }
@@ -46,4 +50,3 @@ function searchCountry(query) {
 }
 
 refs.inputRef.addEventListener('input', debounce(searchCountry, 500));
-

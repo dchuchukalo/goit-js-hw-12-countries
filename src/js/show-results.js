@@ -1,5 +1,11 @@
-import PNotify from 'pnotify/dist/es/PNotify.js';
-import PNotifyButtons from 'pnotify/dist/es/PNotifyButtons.js';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/mobile/dist/PNotifyMobile.css';
+import { error, defaultModules } from '@pnotify/core/dist/PNotify.js';
+import * as PNotifyMobile from '@pnotify/mobile/dist/PNotifyMobile.js';
+import '@pnotify/core/dist/BrightTheme.css'
+
+defaultModules.set(PNotifyMobile, {});
+
 import resultList from '../templates/results-list.hbs';
 import countryResult from '../templates/country-result.hbs';
 import refs from './refs';
@@ -7,7 +13,7 @@ import refs from './refs';
 export default function showResult(data) {
   let markup = '';
   if (data.length > 10) {
-    PNotify.error({
+    error({
       text: 'Too many matches found. Please enter a more specific query!',
     });
     refs.resultsRef.innerHTML = '';
