@@ -2,7 +2,7 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/mobile/dist/PNotifyMobile.css';
 import { error, defaultModules } from '@pnotify/core/dist/PNotify.js';
 import * as PNotifyMobile from '@pnotify/mobile/dist/PNotifyMobile.js';
-import '@pnotify/core/dist/BrightTheme.css'
+import '@pnotify/core/dist/BrightTheme.css';
 
 defaultModules.set(PNotifyMobile, {});
 
@@ -39,10 +39,18 @@ export default function showResult(data) {
     refs.resultsRef.addEventListener('click', choosingFromList);
 
     function choosingFromList(e) {
-      const a = data.filter(element => element.name === e.target.textContent);
-      const markup = countryResult(...a);
+      let targetContent = e.target.textContent;
+
+      if (e.target.nodeName === 'LI') {
+        targetContent = e.target.children[0].textContent;
+      }
+
+      const filterResult = data.filter(
+        element => element.name === targetContent,
+      );
+      const markup = countryResult(...filterResult);
       insertMarkup(markup);
-      refs.inputRef.value = e.target.textContent;
+      refs.inputRef.value = targetContent;
       refs.resultsRef.removeEventListener('click', choosingFromList);
     }
   }
