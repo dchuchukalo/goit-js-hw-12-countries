@@ -46,3 +46,4 @@ function searchCountry(query) {
 }
 
 refs.inputRef.addEventListener('input', debounce(searchCountry, 500));
+

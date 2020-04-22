@@ -52,7 +52,7 @@
     "core-js": "^3.6.5",
     "handlebars": "^4.7.6",
     "lodash.debounce": "^4.0.8",
-    "pnotify": "^4.0.0",
+    "pnotify": "^4.0.1",
     "spin.js": "^4.1.0"
   }
 }
